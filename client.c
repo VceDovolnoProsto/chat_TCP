@@ -35,7 +35,6 @@ void *receive_handler(void *sock_fd)
     }
 }
 
-// get sockaddr, IPv4 or IPv6:
 void *get_in_addr(struct sockaddr *sa)
 {
     if (sa->sa_family == AF_INET) 
@@ -90,9 +89,7 @@ int main(int argc, char *argv[])
     fgets(nickname, sizeof nickname, stdin);
 
     pthread_t recv_thread;
-    //new_sockfd = malloc(sizeof(int));
-    //new_sockfd = sockfd;
-    
+
     if( pthread_create(&recv_thread, NULL, receive_handler, (void*)(intptr_t) sockfd) < 0)
     {  
         perror("could not create thread");
