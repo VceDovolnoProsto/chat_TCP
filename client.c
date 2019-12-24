@@ -87,8 +87,6 @@ int main(int argc, char *argv[])
     printf("client: connecting to %s\n", s);
  
     puts("nickname:");
-    memset(&nickname, sizeof(nickname), 0);
-    memset(&message, sizeof(message), 0);
     fgets(nickname, sizeof nickname, stdin);
 
     pthread_t recv_thread;
@@ -105,8 +103,6 @@ int main(int argc, char *argv[])
 
     for(;;)
     {
-
-        memset(&sBuf, sizeof(sBuf), 0);
         fgets(sBuf, MAXIMUM_MESSAGE_SIZE, stdin); 
         
         int count = 0;
@@ -130,7 +126,6 @@ int main(int argc, char *argv[])
             perror("send");
             return 1;
         }
-        memset(&sBuf, sizeof(sBuf), 0);
     }
     
 
