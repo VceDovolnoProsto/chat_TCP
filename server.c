@@ -43,8 +43,9 @@ int main(void)
     { 
         perror("socket");
         exit(6);
-    }       
-    setsockopt(server, SOL_SOCKET, SO_REUSEADDR, 1, sizeof(int));
+    } 
+    int yes=1;
+    setsockopt(server, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
     if (bind(server, servinfo->ai_addr, servinfo->ai_addrlen) < 0) 
     {
         perror("bind");
